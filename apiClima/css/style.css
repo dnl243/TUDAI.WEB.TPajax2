@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+table {
+  width: 360px;
+  border-collapse: collapse;
+  text-align: center;
+}
+th,
+td {
+  padding: 2vw;
+  width: 120px;
+  border: 1px solid #000;
+}
+th {
+  background-color: #97f49d;
+}
+td {
+  font-weight: bold;
+}
+h1, h2{
+  padding: 2vw;
+}

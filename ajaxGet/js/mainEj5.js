@@ -12,27 +12,31 @@ let response = await respons.json() // para datos
 //DELETE: borrar un recurso
 
 "use strict";
+let url = "https://60aab45166f1d000177731ea.mockapi.io/api/usuarios";
+let ulLista = document.querySelector("#listaUsuarios");
 
 async function solicitarDatos() {
-  let url = "https://60aab45166f1d000177731ea.mockapi.io/api/usuarios";
-  let ulLista = document.querySelector("#listaUsuarios");
-  ulLista.innerHTML = "";
   try {
     let res = await fetch(url);
     if (res.ok) {
       let json = await res.json();
       console.table(json);
-      json.forEach((e) => {
-        let nuevoLi = document.createElement("li");
-        nuevoLi.innerHTML = `id(${e.id}) ${e.nombre}`;
-        ulLista.appendChild(nuevoLi);
-      });
+      mostrarLista(json);
     } else {
       console.log("Ha ocurrido un error..");
     }
   } catch (error) {
     console.log(error);
   }
+}
+
+function mostrarLista(json) {
+  ulLista.innerHTML = "";
+  json.forEach((e) => {
+    let nuevoLi = document.createElement("li");
+    nuevoLi.innerHTML = `id(${e.id}) ${e.nombre}`;
+    ulLista.appendChild(nuevoLi);
+  });
 }
 
 solicitarDatos();

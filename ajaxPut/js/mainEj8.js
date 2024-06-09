@@ -21,19 +21,13 @@ let jsonEnviado = document.querySelector("#jsonEnviado");
 let urlDestino = document.querySelector("#urlDestino");
 let idModificado = document.querySelector("#id");
 
-async function mostrarLista() {
-  ulLista.innerHTML = "";
+async function solicitarDatos() {
   try {
     let res = await fetch(url);
     if (res.ok) {
       let json = await res.json();
-      console.table(json);
-
-      json.forEach((e) => {
-        let nuevoLi = document.createElement("li");
-        nuevoLi.innerHTML = `id(${e.id}) ${e.nombre}`;
-        ulLista.appendChild(nuevoLi);
-      });
+      console.log(json);
+      mostrarLista(json);
     } else {
       console.log("Ha ocurrido un error..");
     }
@@ -42,20 +36,29 @@ async function mostrarLista() {
   }
 }
 
-mostrarLista();
+function mostrarLista(json) {
+  ulLista.innerHTML = "";
+  json.forEach((e) => {
+    let nuevoLi = document.createElement("li");
+    nuevoLi.innerHTML = `id(${e.id}) ${e.nombre}`;
+    ulLista.appendChild(nuevoLi);
+  });
+}
+
+solicitarDatos();
 
 async function enviarDatos(u, id) {
   try {
     let res = await fetch(`${url}/${id}`, {
       method: "PUT",
       headers: {
-        "Content-type": "aplication/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(u),
     });
     if (res.ok) {
       console.log("Modificado!");
-      mostrarLista();
+      solicitarDatos();
     }
   } catch (error) {
     console.log(error);

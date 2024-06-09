@@ -7,23 +7,27 @@ document.addEventListener("DOMContentLoaded", () => {
   let btnBorrar = document.querySelector("#btnBorrar");
 
   async function solicitarDatos() {
-    ulLista.innerHTML = "";
     try {
       let res = await fetch(url);
       if (res.ok) {
         let json = await res.json();
-        console.table(json);
-        json.forEach((e) => {
-          let nuevoLi = document.createElement("li");
-          nuevoLi.innerHTML = `id(${e.id}) ${e.nombre}`;
-          ulLista.appendChild(nuevoLi);
-        });
+        console.log(json);
+        mostrarDatos(json);
       } else {
         console.log("Ha ocurrido un error..");
       }
     } catch (error) {
       console.log(error);
     }
+  }
+
+  function mostrarDatos(json) {
+    ulLista.innerHTML = "";
+    json.forEach((e) => {
+      let nuevoLi = document.createElement("li");
+      nuevoLi.innerHTML = `id(${e.id}) ${e.nombre}`;
+      ulLista.appendChild(nuevoLi);
+    });
   }
 
   solicitarDatos();

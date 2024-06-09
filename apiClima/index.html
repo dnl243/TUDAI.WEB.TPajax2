@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Api Clima</title>
+</head>
+<body>
+  <h1>Datos del clima para tandil</h1>
+  <p id="fecha"></p>
+  <table id="tablaDatos">
+    <tr>
+      <th>Temperatura</th>
+      <th>Presión</th>
+      <th>Humedad</th>
+    </tr>
+    <tr>
+      <td><span id="temp"></span>°</td>
+      <td><span id="hum"></span>%</td>
+      <td><span id="pres"></span>hPa</td>
+    </tr>
+  </table>
+  <h2>Otros datos de interés</h2>
+  <section class="otrosDatos">
+    <img alt="imagen" id="img" />
+    <p id="desc"></p>
+    <p>Sensación Térmica: <span id="st"></span>°</p>
+    <p>
+      Viento: <span id="viento"></span>km/h desde el
+      <span id="direccion"></span>
+    </p>
+    <p>Ráfagas: <span id="rafagas"></span>km/h</p>
+    <p>Visibilidad: <span id="visibilidad"></span>km</p>
+    <p>Salida del sol: <span id="salida"></span>hs</p>
+    <p>Puesta del sol: <span id="puesta"></span>hs</p>
+  </section>
+  <script src="js/main.js"></script>
+</body>
+</html>

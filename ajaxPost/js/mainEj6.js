@@ -20,18 +20,13 @@ let numeroEnviado = document.querySelector("#numeroEnviado");
 let jsonEnviado = document.querySelector("#jsonEnviado");
 let urlDestino = document.querySelector("#urlDestino");
 
-async function mostrarLista() {
-  ulLista.innerHTML = "";
+async function solicitarDatos() {
   try {
     let res = await fetch(url);
     if (res.ok) {
       let json = await res.json();
-      console.table(json);
-      json.forEach((e) => {
-        let nuevoLi = document.createElement("li");
-        nuevoLi.innerHTML = `id(${e.id}) ${e.nombre}`;
-        ulLista.appendChild(nuevoLi);
-      });
+      console.log(json);
+      mostrarLista(json);
     } else {
       console.log("Ha ocurrido un error..");
     }
@@ -40,20 +35,31 @@ async function mostrarLista() {
   }
 }
 
-mostrarLista();
-  
+function mostrarLista(json) {
+  ulLista.innerHTML = "";
+  json.forEach((e) => {
+    let nuevoLi = document.createElement("li");
+    nuevoLi.innerHTML = `id(${e.id}) ${e.nombre}`;
+    ulLista.appendChild(nuevoLi);
+  });
+}
+
+solicitarDatos();
+
 async function enviarDatos(u) {
   try {
     let res = await fetch(url, {
       method: "POST",
       headers: {
-        "Content-type": "aplication/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(u),
     });
-    if (res.status == 201) {
+    if (res.ok) {
+      let json = await res.json();
+      console.log(json);
       console.log("Creado!");
-      mostrarLista();
+      solicitarDatos();
     }
   } catch (error) {
     console.log(error);
@@ -69,13 +75,11 @@ function enviarForm(e) {
     nombre: nombre,
     numero: numero,
   };
+  console.log(usuario);
   enviarDatos(usuario);
   nombreEnviado.innerHTML = usuario.nombre;
   numeroEnviado.innerHTML = usuario.numero;
-  jsonEnviado.innerHTML = `{
-    nombre: "${nombre}",
-    numero: "${numero}"
-  }`;
+  jsonEnviado.innerHTML = JSON.stringify(usuario);
   urlDestino.innerHTML = url;
 }
 
