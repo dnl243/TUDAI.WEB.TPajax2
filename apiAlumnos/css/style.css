@@ -1,0 +1,47 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+table,
+td,
+th {
+  text-align: center;
+  border-collapse: collapse;
+  border: 1px solid #222;
+}
+th,
+td {
+  padding: 0.5vw;
+}
+#formAlumnos input {
+  text-align: center;
+  border: none;
+  width: 10vw;
+  margin: 1vw;
+  outline: none;
+}
+#formAlumnos button {
+  margin: 1vw;
+}
+#borrarAlumno input {
+  text-align: center;
+  padding: 1vw;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none; /* Chrome y Safari */
+  margin: 0; /* Elimina el espacio que ocupan las flechas */
+}
+
+input[type="number"]::-moz-inner-spin-button,
+input[type="number"]::-moz-outer-spin-button {
+  -moz-appearance: none; /* Firefox */
+  margin: 0;
+}

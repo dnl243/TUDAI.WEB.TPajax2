@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>ApiAlumnos</title>
+  </head>
+  <body>
+    <main>
+      <h1>Parciales Web</h1>
+      <p>Ingrese los datos del alumno..</p>
+      <form id="formAlumnos">
+        <table>
+          <tr>
+            <th>
+              <label for="nombre">Nombre</label>
+            </th>
+            <th>
+              <label for="apellido">Apellido</label>
+            </th>
+            <th>
+              <label for="dni">DNI</label>
+            </th>
+            <th>
+              <label for="1erParcial">1er Parcial</label>
+            </th>
+            <th>
+              <label for="2doParcial">2do Parcial</label>
+            </th>
+            <th>
+              <label for="3erParcial">3er Parcial</label>
+            </th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>
+              <input type="text" name="nombre" id="nombre" required />
+            </td>
+            <td>
+              <input type="text" name="apellido" id="apellido" required />
+            </td>
+            <td>
+              <input type="number" name="dni" id="dni" required />
+            </td>
+            <td>
+              <input
+                type="number"
+                min="0"
+                max="10"
+                step="0.1"
+                name="1erParcial"
+                id="1erParcial"
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                min="0"
+                max="10"
+                step="0.1"
+                name="2doParcial"
+                id="2doParcial"
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                min="0"
+                max="10"
+                step="0.1"
+                name="3erParcial"
+                id="3erParcial"
+              />
+            </td>
+            <td>
+              <button>Cargar</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+      <p>Ingrese nombre y apellido del alumno para borrar</p>
+      <form id="borrarAlumno">
+        <input type="text" name="nombreComp" id="nombreComp">
+        <button>Borrar</button>
+      </form>
+      <h3>Estadísticas de parciales</h3>
+      <table>
+        <tr>
+          <th>Parcial</th>
+          <th>Aprobados</th>
+          <th>Desaprobados</th>
+          <th>% Aprob.</th>
+          <th>Promedio</th>
+        </tr>
+        <tr id="parcial1"></tr>
+        <tr id="parcial2"></tr>
+        <tr id="parcial3"></tr>
+      </table>
+      <h3>Tabla de datos</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Apellido</th>
+            <th>Nombre</th>
+            <th>DNI</th>
+            <th>1er Par</th>
+            <th>2do Par</th>
+            <th>3er Par</th>
+            <th>Prom</th>
+          </tr>
+        </thead>
+        <tbody id="datosTabla"></tbody>
+      </table>
+      <h3>Listado de alumnos</h3>
+      <ul id="ulAlumnos"></ul>
+    </main>
+    <script src="js/main.js"></script>
+  </body>
+</html>
